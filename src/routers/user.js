@@ -102,8 +102,8 @@ router.post('/users/me/avatar', auth, avatar.single('avatar'), async (req, res) 
     req.user.avatar = buffer
     await req.user.save()
     res.send()
-}, ({ message:error }, req, res, next) => {
-    res.status(400).send({ error })
+}, (error, req, res, next) => {
+    res.status(400).send({ error: error.message })
 })
 
 router.delete('/users/me/avatar', auth, async (req, res) => {
