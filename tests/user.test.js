@@ -56,18 +56,3 @@ test('Should not get profile for unauthorized user', async () => {
         .send()
         .expect(401)
 })
-
-// test('Should delete profile for user', async () => {
-//     await request(app)
-//         .delete('/users/me')
-//         .set('Authorization', `Bearer ${user1.tokens[0].token}`)
-//         .send()
-//         .expect(200)
-// })
-
-// test('Should not delete profile for unauthorized user', async () => {
-//     await request(app)
-//         .delete('/users/me')
-//         .send()
-//         .expect(500)
-// })
