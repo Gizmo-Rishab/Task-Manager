@@ -48,12 +48,21 @@ const task3 = {
 
 const configDB = async () => {
     await User.deleteMany()
+    await Task.deleteMany()
     await new User(user1).save()
     await new User(user2).save()
+    await new Task(task1).save()
+    await new Task(task2).save() 
+    await new Task(task3).save() 
 }
 
 module.exports = {
     _id1,
+    _id2,
     user1,
+    user2,
+    task1,
+    task2,
+    task3,
     configDB
 }
