@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../img/favicon.png">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Task Manager</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="header__title">Task Manager</h1>
+      <h2 class="header__subtitle">What do you need to do?</h2>
+    </div>
+  </header>
+
+  <div class="actions">
+    <div class="actions__container">
+      <input id="searchText" class="input" type="text" placeholder="Filter Tasks">
+      <label class="checkbox">
+        <input type="checkbox" id="hideCompletedTasks">
+        Hide completed tasks
+      </label>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="tasks">
+      <div id="taskSummary"></div>
+      <div id="tasksList"></div>
+      <p class="status-message">Congratulations! You just <%= status %></p>
+    </div>
+    <form id="addTask">
+      <input class="input" type="text" name="taskText" placeholder="Add Task">
+      <button class="button" type="submit">Add Task</button>
+    </form>
+  </div>
+  <script src="../js/index.js" type="module"></script>
+</body>
+
+</html>
