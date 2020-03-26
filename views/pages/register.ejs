@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="form" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/avatar.css">
+  <link rel="icon" href="/img/favicon.png">
+</head>
+
+<body class="form">
+  <div class="centered-form">
+    <div class="centered-form__box">
+      <h1 class="centered-form__heading">Register</h1>
+      <form method="POST" action="/users">
+        <label class="centered-form__label" for="name">Name</label>
+        <input type="text" name="name" id="name" class="centered-form__input">
+        <label class="centered-form__label" for="email">Email</label>
+        <input type="text" name="email" id="email" class="centered-form__input">
+        <label class="centered-form__label" for="password">Password</label>
+        <input type="password" name="password" id="password" class="centered-form__input">
+        <button class="centered-form__button">Register</button>
+      </form><br>
+      <p class="meta" align="center"> OR </p><br>
+      <a href="/"><button class="centered-form__button">Login</button></a>
+    </div>
+  </div>
+</body>
+
+</html>

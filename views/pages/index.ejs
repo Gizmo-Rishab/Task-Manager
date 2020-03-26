@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html class="form" lang="en">
+
+<%- include("../partials/includes") %> 
+
+<body class="form">
+  <div class="centered-form">
+    <div class="centered-form__box">
+      <h1 class="centered-form__heading">Login</h1>
+      <form method="POST" action="/users/login">
+        <label for="email" class="centered-form__label">Email</label>
+        <input type="text" name="email" id="email" class="centered-form__input">
+        <label for="password" class="centered-form__label">Password</label>
+        <input type="password" name="password" id="password" class="centered-form__input">
+        <button class="centered-form__button">Login</button>
+      </form><br>
+      <p class="meta" align="center"> OR </p><br>
+      <a href="/register"><button class="centered-form__button">Register</button></a>
+    </div>
+  </div>
+</body>
+
+</html>

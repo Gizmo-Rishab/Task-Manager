@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const taskSchema = new mongoose.Schema({
-    description: {
+    text: {
         type: String,
         trim: true,
         required: true
@@ -11,7 +11,7 @@ const taskSchema = new mongoose.Schema({
         default: false
     },
     owner: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },

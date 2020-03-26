@@ -1,38 +1,37 @@
-import { renderTasks } from './views'
-import { setFilters } from './filters'
-import { createTask, loadTasks } from './tasks'
+import { renderTasks } from './views.js';
+import { setFilters } from './filters.js';
+import { createTask } from './tasks.js';
 
-renderTasks()
+renderTasks();
 
 document.querySelector('#searchText').addEventListener('input', (e) => {
     setFilters({
         searchText: e.target.value
-    })
-    renderTasks()
-})
+    });
+    renderTasks();
+});
 
 document.querySelector('#addTask').addEventListener('submit', (e) => {
-    const text = e.target.elements.taskText.value.trim()
-    e.preventDefault()
+    const text = e.target.elements.taskText.value.trim();
+    e.preventDefault();
 
     if (text.length > 0) {
-        debugger
-        createTask(text)
-        renderTasks()
-        e.target.elements.taskText.value = ''
+        createTask(text);
+        renderTasks();
+        e.target.elements.taskText.value = '';
     }
-})
+});
 
 document.querySelector('#hideCompletedTasks').addEventListener('change', (e) => {
     setFilters({
-    	hideCompleted: e.target.checked
-    })
-    renderTasks()
-})
+        hideCompleted: e.target.checked
+    });
+    renderTasks();
+});
 
 window.addEventListener('storage', (e) => {
     if (e.key === 'tasks') {
-        loadTasks()
-        renderTasks()
+        loadTasks();
+        renderTasks();
     }
-})
+});

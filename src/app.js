@@ -1,15 +1,17 @@
 import express from 'express';
 import 'ejs';
-import { join } from 'path';
+import path from 'path';
+import url from 'url';
 import cookieParser from 'cookie-parser';
 import './db/mongoose.js';
 import userRouter from './routers/user.js';
 import taskRouter from './routers/task.js';
 import loginRouter from './routers/login.js';
 
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const app = express();
-const publicDirectoryPath = join(__dirname, '../public');
-const viewsPath = join(__dirname, '../templates/views');
+const publicDirectoryPath = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../views');
 
 // Ejs setup and custom path setup
 app.set('view engine', 'ejs');

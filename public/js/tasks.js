@@ -1,50 +1,56 @@
-import uuidv4 from 'uuid/v4'
+let tasks = [];
+const Crypto = window.crypto || window.msCrypto;
 
-let tasks = []
+const loadTasks = async () => {
+    const response = await fetch('/tasks');
 
-const loadTasks = () => {
-    const tasksJSON = localStorage.getItem('tasks')
-    
     try {
-        tasks = tasksJSON ? JSON.parse(tasksJSON) : []
-    } catch (e) {
-        tasks = []
+        tasks = await response.json();
+    } catch (error) {
+        tasks = [];
     }
-}
+};
 
 const saveTasks = () => {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-}
+    fetch('/tasks', { method: 'post', body: tasks });
+};
 
-const getTasks = () => tasks
+const getTasks = () => tasks;
 
 const createTask = (text) => {
-    tasks.push({
-    	id: uuidv4(),
+    const task = {
         text,
-        completed: false
-    })
-    saveTasks()
-}
+        completed: false,
+        owner: document.querySelector('#owner').textContent
+    };
+
+    tasks.push({
+        uuid: Crypto.getRandomValues(new Uint32Array(1))[0],
+        ...task
+    });
+
+    fetch('/tasks', { method: 'post', body: task });
+    debugger;
+};
 
 const removeTask = (id) => {
-    const taskIndex = tasks.findIndex((task) => task.id === id)
+    const taskIndex = tasks.findIndex((task) => task.id === id);
 
     if (taskIndex > -1) {
-        tasks.splice(taskIndex, 1)
-        saveTasks()
+        tasks.splice(taskIndex, 1);
+        saveTasks();
     }
-}
+};
 
 const toggleTask = (id) => {
-    const task = tasks.find((task) => task.id === id)
+    const task = tasks.find((task) => task.id === id);
 
     if (task) {
-        task.completed = !task.completed
-        saveTasks()
+        task.completed = !task.completed;
+        saveTasks();
     }
-}
+};
 
-loadTasks()
+loadTasks();
 
-export { loadTasks, getTasks, createTask, removeTask, toggleTask }
+export { loadTasks, getTasks, createTask, removeTask, toggleTask };
