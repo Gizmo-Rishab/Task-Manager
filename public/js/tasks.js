@@ -20,8 +20,7 @@ const getTasks = () => tasks;
 const createTask = (text) => {
     const task = {
         text,
-        completed: false,
-        owner: document.querySelector('#owner').textContent
+        completed: false
     };
 
     tasks.push({
@@ -29,8 +28,13 @@ const createTask = (text) => {
         ...task
     });
 
-    fetch('/tasks', { method: 'post', body: task });
-    debugger;
+    fetch('/tasks', {
+        method: 'post',
+        body: JSON.stringify(task),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    });
 };
 
 const removeTask = (id) => {
@@ -50,7 +54,5 @@ const toggleTask = (id) => {
         saveTasks();
     }
 };
-
-loadTasks();
 
 export { loadTasks, getTasks, createTask, removeTask, toggleTask };

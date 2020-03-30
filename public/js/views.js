@@ -1,9 +1,11 @@
-import { getTasks, toggleTask, removeTask } from './tasks.js';
+import { getTasks, toggleTask, removeTask, loadTasks } from './tasks.js';
 import { getFilters } from './filters.js';
 
-const renderTasks = () => {
+const renderTasks = async () => {
     const tasksEl = document.querySelector('#tasks');
     const { searchText, hideCompleted } = getFilters();
+    await loadTasks();
+
 	const filteredTasks = getTasks().filter((task) => {
         const searchTextMatch = task.text.toLowerCase().includes(searchText.toLowerCase());
         const hideCompletedMatch = !hideCompleted || !task.completed;
@@ -42,7 +44,7 @@ const generateTaskDOM = (task) => {
         renderTasks();
     });
 
-    textEl.textContent = task.description;
+    textEl.textContent = task.text;
     containerEl.appendChild(textEl);
 
     taskEl.classList.add('list-item');
